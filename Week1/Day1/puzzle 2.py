@@ -1,14 +1,17 @@
-v = [199, 200, 208, 210, 200, 207, 240, 269, 260,263]
 
+def parse_measurements(file_name):
+    with open(file_name) as f:
+        return [int(line.strip().replace(',','')) for line in f.readlines()]
+
+measurements = parse_measurements('data.txt')
 increase =0
 decrease =0
 sum1 =0
 sum2 =0
-length = len(v)
 
-for i in range(0, length-3):
-    sum1 = v[i] + v[i+1] + v[i+2] 
-    sum2 = v[i+1] +v[i+2] +v[i+3]
+for i in range(len(measurements)-3):
+    sum1 = sum(measurements[i:i+3])
+    sum2 = sum(measurements[i+1:i+4])
     if sum1 < sum2 :
         increase = increase +1
     else:
