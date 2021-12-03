@@ -1,9 +1,12 @@
-v = [199, 200, 208, 210, 200, 207, 240, 269, 260,263]
+
+def parse_measurements(file_name):
+    with open(file_name) as f:
+        return [int(line.strip().replace(',','')) for line in f.readlines()]
 
 increase =0
 decrease =0
 
-length = len(v)
+length = parse_measurements('data.txt')
 
 for i in range(0, length-1):
     if v[i+1] > v[i]:
